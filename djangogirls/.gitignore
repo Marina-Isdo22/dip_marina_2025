@@ -1,3 +1,15 @@
-/myvenv
-/.idea
+# virtualenv
+myvenv/
+venv/
+.env
 
+# Django stuff:
+*.log
+*.pyc
+__pycache__/
+db.sqlite3
+/media/
+
+# VSCode / PyCharm
+.vscode/
+.idea/
