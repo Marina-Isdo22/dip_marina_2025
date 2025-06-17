@@ -1,0 +1,19 @@
+<form method="post" class="login-form">
+  {% csrf_token %}
+  <h2 class="login-title">Вход</h2>
+
+  <label for="id_email">E-mail</label>
+  <input type="email" name="email" id="id_email" placeholder="youmail@mail.com" required>
+
+  <label for="id_password">Пароль</label>
+  <input type="password" name="password" id="id_password" placeholder="****************" required>
+
+  <div class="forgot-link">
+    <a href="{% url 'password_reset' %}">Забыли пароль?</a>
+  </div>
+
+  <button type="submit" class="login-btn">Войти</button>
+
+  <a href="{% url 'register' %}" class="register-btn">Создать учетную запись</a>
+</form>
+

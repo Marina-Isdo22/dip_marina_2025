@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- breadcrumbs -->
+<div class="container">
+  <div class="breadcrumbs">
+    <a href="/">Главная</a> &gt;
+    <a href="/catalog/">Каталог</a> &gt;
+    <span>{{ product.name }}</span>
+  </div>
+
+  <!-- product -->
+  <div class="product-container">
+    <div class="product-image">
+      <img src="{{ product.image_url }}" alt="{{ product.name }}">
+    </div>
+    <div class="product-details">
+      <h1 class="product-title">{{ product.name }}</h1>
+      <p class="product_status">В наличии</p>
+      <div class="price product_price">{{ product.price }} ₽</div>
+      <div class="product_buy">
+        <form method="post" action="{% url 'add_to_cart' product.id %}">
+          {% csrf_token %}
+          <button type="submit" class="button buy-button">В корзину</button>
+        </form>
+      </div>
+      <div class="delivery-info">
+        <span>Поставщик: Аксон</span>
+        <span>Доставка курьером или самовывоз.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="description">
+    <h2>Описание</h2>
+    <p>{{ product.description }}</p>
+  </div>
+</div>
+
+<div class="container-card">
+        <div class="container-card-header">
+            <h1>Похожие товары</h1>
+        </div>
+        <div class="container-card-content">
+            {% for item in products %}
+            <div class="card">
+                <a href="{% url 'product_detail' item.id %}">
+                    <img src="{{ item.image_url }}" alt="{{ item.name }}" class="product-image"/>
+                </a>
+                <div class="product-info">
+                    <p class="subtitle">{{ item.name }}</p>
+                    <div class="product-price">
+                        <span class="price">{{ item.price }} ₽</span>
+                    </div>
+                    <form method="post" action="{% url 'add_to_cart' item.id %}">
+                        {% csrf_token %}
+                        <button class="add-to-cart" type="submit">В корзину</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

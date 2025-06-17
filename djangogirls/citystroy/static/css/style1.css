@@ -1,0 +1,425 @@
+/* -------------------- Шрифты -------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Manrope", sans-serif;
+}
+
+/* -------------------- Навигация -------------------- */
+
+.navbar {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.top-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+}
+
+.block-logo {
+    display: flex;
+    align-items: flex-end;
+}
+
+.logo-img {
+    width: 48px;
+    height: 48px;
+}
+
+.logo {
+    margin-left: 6px;
+    font-size: 32px;
+    font-weight: 500;
+    color: #222;
+}
+
+.main-nav a {
+    margin-left: 100px;
+    text-decoration: none;
+    font-size: 17px;
+    color: #444;
+}
+
+.sub-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 10px 24px;
+    border-top: 1px solid #E8E9EA;
+    border-bottom: 1px solid #E8E9EA;
+}
+
+.sub-menu a,
+.main-nav a {
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.sub-menu a {
+    font-size: 14px;
+    color: #333;
+}
+
+.main-nav a:hover,
+.sub-menu a:hover {
+    color: #d00000;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 101px 0 101px 0;
+}
+/* -------------------- Промо-блок (Акции) -------------------- */
+
+.container-promotion {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-promotion-h1 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.promotion-button-h1 {
+    width: 140px;
+    height: 40px;
+    font-size: 14px;
+    background: #fff;
+    border: 1px solid rgb(209, 209, 211);
+}
+
+.cards-promotion {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.card-promotion {
+    display: flex;
+    max-width: 582px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.promotion-image {
+    width: 278px;
+    height: 208px;
+}
+
+.info {
+    width: 294px;
+    height: 208px;
+    margin: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title-text {
+    height: 72px;
+    margin: 0 0 12px;
+    font-size: 16px;
+    color: #333;
+}
+
+.price-block {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+}
+
+.old-price {
+    font-size: 16px;
+    color: #999;
+    text-decoration: line-through;
+}
+
+.add-to-cart {
+    width: 100%;
+    margin-top: 16px;
+    padding: 10px 16px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #FC0D0D;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart:hover {
+    background-color: #FC0D0D;
+}
+
+.add-promotion {
+    width: 100%;
+    margin-top: 0;
+}
+
+/* -------------------- Товары (Общие карточки) -------------------- */
+
+.card {
+    width: 278px;
+    height: 416px;
+    background: #fff;
+    overflow: hidden;
+    text-align: center;
+    border: 1px solid #E8E9EA;
+}
+
+.product-image {
+    width: 278px;
+    height: 208px;
+    display: block;
+    border: 1px solid #E8E9EA;
+}
+
+.product-info {
+    padding: 16px;
+}
+.product-price {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.title {
+    margin: 0;
+    font-size: 18px;
+}
+
+.subtitle {
+    width: 100%;
+    height: 72px;
+    margin: 4px 0 12px;
+    font-size: 16px;
+    color: #666;
+    text-align: left;
+}
+
+.container-card{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 201px;
+}
+.container-card-header{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+.container-card-content{
+    width: 100%;
+    display: grid;
+    grid-template-columns:  repeat(4, 1fr);
+    gap: 16px;
+}
+
+/* -------------------- Кнопка корзины -------------------- */
+
+.header-button-block {
+    display: flex;
+    align-items: center;
+}
+
+.cart-button {
+    width: 82px;
+    height: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* -------------------- Подвал -------------------- */
+
+footer {
+    height: 283px;
+    background: rgb(69, 68, 68);
+    color: #fff;
+    margin-top: 30px;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-content {
+    width: 80%;
+    margin-top: 46px;
+    height: 192px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+    border-bottom: 1px solid #5D6066;
+}
+
+.footer-one {
+    margin-left: 78px;
+}
+
+.footer-section h4 {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.footer-section ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-section li {
+    margin-bottom: 20px;
+}
+
+.footer-section a {
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
+
+.contact-info p {
+    margin: 5px 0;
+}
+
+.footer-logo {
+    margin-bottom: 30px;
+}
+
+.footer-logo-text {
+    color: #fff;
+}
+
+
+.buy-button {
+    width: 100%;
+    height: 48px;
+    line-height: 48px;
+    padding: 20px;
+    text-align: center;
+    background: #fc0d0d;
+    color: #fff;
+    padding: 0;
+    margin-bottom: 35px;
+}
+
+
+.product_buy {
+    display: flex;
+    column-gap: 12px;
+}
+.quantity-control {
+    display: flex;
+    height: 48px;
+}
+
+.quantity-control_button {
+    height: 48px;
+    width: 48px;
+    border: 1px solid #d1d1d3;
+    padding: 6px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.delivery-info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+}
+
+.description {
+    border: 1px solid #e8e9ea;
+    padding: 60px 180px;
+}
+
+/*.description p {*/
+/*    margin-bottom: 20px;*/
+/*}*/
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    display: none;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    max-width: 545px;
+    height: 400px;
+    width: 100%;
+    z-index: 999;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.modal-active {
+    display: block;
+}
+.container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

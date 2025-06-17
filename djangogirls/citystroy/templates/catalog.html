@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Каталог{% endblock %}
+{% load static %}
+{% block content %}
+<img src="{% static 'img/Frame%204176.png' %}">
+<div class="main-catalog">
+    <!-- Фильтрация -->
+
+    <form method="get" id="filter-form">
+        <div class="price-filter">
+            <h2>Цена</h2>
+
+            <div class="input-group">
+                <input type="number" id="min-price" name="min_price" value="{{ min_price }}">
+                <input type="number" id="max-price" name="max_price" value="{{ max_price }}">
+            </div>
+
+            <!-- НОВЫЙ ПОЛЗУНОК -->
+            <div id="price-slider" style="margin-bottom: 15px;"></div>
+
+            <!-- СТАРЫЕ (СКРЫТЫЕ) ПОЛЗУНКИ, для совместимости или fallback -->
+            <input type="range" id="min-range" min="100" max="10000" value="{{ min_price }}" style="display: none;">
+            <input type="range" id="max-range" min="100" max="10000" value="{{ max_price }}" style="display: none;">
+
+            <button class="filter-button" type="submit" id="apply-btn">Применить</button>
+            <button class="filter-button" type="button" id="reset-btn">Сбросить</button>
+        </div>
+    </form>
+
+
+    <!-- Сетка товаров -->
+    <div class="product-grid">
+        {% for item in products %}
+        <div class="card">
+                <a href="{% url 'product_detail' item.id %}">
+                    <img src="{{ item.image_url }}" alt="{{ item.name }}" class="product-image"/>
+                </a>
+                <div class="product-info">
+                    <p class="subtitle">{{ item.name }}</p>
+                    <div class="product-price">
+                        <span class="price">{{ item.price }} ₽</span>
+                    </div>
+                    <form method="post" action="{% url 'add_to_cart' item.id %}">
+                        {% csrf_token %}
+                        <button class="add-to-cart" type="submit">В корзину</button>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<!-- Пагинация -->
+<div class="pagination">
+    {% if products.has_previous %}
+    <a href="?min_price={{ min_price }}&max_price={{ max_price }}&page={{ products.previous_page_number }}">&larr;</a>
+    {% endif %}
+
+    {% for page_num in products.paginator.page_range %}
+    {% if page_num == products.number %}
+    <strong>{{ page_num }}</strong>
+    {% else %}
+    <a href="?min_price={{ min_price }}&max_price={{ max_price }}&page={{ page_num }}">{{ page_num }}</a>
+    {% endif %}
+    {% endfor %}
+
+    {% if products.has_next %}
+    <a href="?min_price={{ min_price }}&max_price={{ max_price }}&page={{ products.next_page_number }}">&rarr;</a>
+    {% endif %}
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.js"></script>
+
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock %}

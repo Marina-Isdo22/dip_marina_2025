@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<div class="container-promotion">
+    <div class="container-promotion-h1">
+        <h1>Акции</h1>
+        <button class="promotion-button-h1">Все акции &gt;</button>
+    </div>
+
+    <!-- 🔸 Промо-товары -->
+    <div class="cards-promotion">
+        {% for item in promotions %}
+        <div class="card-promotion">
+            <a href="{% url 'product_detail' item.id %}">
+                <img src="{{ item.image_url }}" alt="{{ item.name }}" class="promotion-image"/>
+            </a>
+            <div class="info">
+                <p class="title-text">{{ item.name }}</p>
+                <div class="price-block">
+                    <span class="price">{{ item.price }} ₽</span>
+                    {% if item.old_price %}
+                    <span class="old-price">{{ item.old_price }} ₽</span>
+                    {% endif %}
+                </div>
+                <form method="post" action="{% url 'add_to_cart' item.id %}">
+                    {% csrf_token %}
+                    <button class="add-to-cart add-promotion" type="submit">В корзину</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- 🔹 Обычные товары -->
+    <div class="container-card">
+        <div class="container-card-header">
+            <h1>Новинки</h1>
+        </div>
+        <div class="container-card-content">
+            {% for item in products %}
+            <div class="card">
+                <a href="{% url 'product_detail' item.id %}">
+                    <img src="{{ item.image_url }}" alt="{{ item.name }}" class="product-image"/>
+                </a>
+                <div class="product-info">
+                    <p class="subtitle">{{ item.name }}</p>
+                    <div class="product-price">
+                        <span class="price">{{ item.price }} ₽</span>
+                    </div>
+                    <form method="post" action="{% url 'add_to_cart' item.id %}">
+                        {% csrf_token %}
+                        <button class="add-to-cart" type="submit">В корзину</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
